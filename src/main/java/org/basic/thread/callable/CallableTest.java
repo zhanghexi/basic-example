@@ -36,10 +36,11 @@ public class CallableTest {
         logger.info("提交完了任务，可以把其他事情做完了，再来轮询获取线程返回的结果的信息");
         for (int i = 0; i < returnFutureList.size(); i++) {
             Future<Integer> future = null;
+            Integer taskReturnTable = null;
             try {
                 future = returnFutureList.get(i);
                 // 依次阻塞一直等待获取到结果的信息
-                Integer taskReturnTable = future.get();
+                taskReturnTable = future.get();
             } catch (InterruptedException e) {
                 logger.error("当前线程中断:{}", e.getMessage());
                 Thread.currentThread().interrupt();//重新声明线程中断了
@@ -51,6 +52,8 @@ public class CallableTest {
                 if (future != null) {
                     future.cancel(true);
                 }
+            } finally {
+                logger.info("返回的Result:{}", taskReturnTable);
             }
         }
     }
