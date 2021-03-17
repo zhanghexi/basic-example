@@ -28,7 +28,8 @@ public class CallableTest {
                 ThreadConstants.KEEP_ALIVE_TIME,
                 TimeUnit.SECONDS,
                 /*设置阻塞队列的队列类型，以及队列的容量大小*/
-                new LinkedBlockingQueue<Runnable>(50),
+                /*这里改为ArrayBlockingQueue(有界对列，如果队列满了，会触发线程池的RejectedExecutionHandler逻辑)*/
+                new ArrayBlockingQueue<Runnable>(50),
                 /*设置创建线程的线程工厂类*/
                 new MyThreadFactory(),
                 /*当工作线程数达到maximumPoolSize并且当下没有空闲线程，假如有新的任务继续提交进来，将采取指定的策略进行拒绝处理*/

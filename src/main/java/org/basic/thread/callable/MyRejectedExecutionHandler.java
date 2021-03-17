@@ -15,6 +15,15 @@ public class MyRejectedExecutionHandler extends ThreadPoolExecutor.AbortPolicy {
     public MyRejectedExecutionHandler() {
     }
 
+    /**
+     * 异常信息实例：
+     * 任务 java.util.concurrent.FutureTask@65f095f8 被线程池拒绝，
+     * from java.util.concurrent.ThreadPoolExecutor@3e6ef8ad
+     * [Running, pool size = 20, active threads = 20, queued tasks = 50, completed tasks = 0]
+     *
+     * @param r
+     * @param executor
+     */
     @Override
     public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
         throw new RejectedExecutionException("任务 " + r.toString() + " 被线程池拒绝，from " + executor.toString());
