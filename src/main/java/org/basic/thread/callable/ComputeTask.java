@@ -28,20 +28,14 @@ public class ComputeTask implements Callable<Integer> {
     }
 
     private Integer toDoWork() {
-        logger.info("子线程计算任务:{}开始执行！", taskName);
-        for (int i = 0; i < 100; i++) {
-            result = i + result;
-        }
+        logger.info("开始执行{}", taskName);
         try {
+            result += 1;
             Thread.sleep(5000);
         } catch (InterruptedException e) {
-            logger.error("线程被中断！", e.getMessage());
+            logger.error("线程被中断!", e.getMessage());
         }
-        logger.info("子线程计算任务:{}执行完成！结果:{}", taskName, result);
+        logger.info("{}执行完成! 结果:{}", taskName, result);
         return result;
-    }
-
-    public String getTaskName() {
-        return this.taskName;
     }
 }
