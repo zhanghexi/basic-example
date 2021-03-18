@@ -3,9 +3,6 @@ package org.basic.thread.waitnotify;
 import lombok.Data;
 import lombok.SneakyThrows;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @Classname WaitNotifyDemo
  * @Description wait(), notify(), notifyAll()不属于Thread类, 而是属于Object基础类
