@@ -13,12 +13,12 @@ public class FutureTaskDemo implements Callable<Integer> {
     @Override
     public Integer call() throws Exception {
         System.out.println("子线程在进行计算...");
-        TimeUnit.SECONDS.sleep(5);
 
         int sum = 0;
         for (int i = 0; i < 20; i++) {
             sum += 1;
             System.out.println("当前sum值 = " + sum);
+            TimeUnit.SECONDS.sleep(1);
         }
         return sum;
     }
