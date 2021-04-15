@@ -16,7 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Obj1 {
 
     public static Object generate() {
-        ConcurrentHashMap<String, Object> cMap = new ConcurrentHashMap<>();
+        ConcurrentHashMap<String, Object> cMap = new ConcurrentHashMap<>(16);
         cMap.putIfAbsent("a", new Integer(1));
         cMap.putIfAbsent("b", "b");
         cMap.putIfAbsent("c", new Date());
