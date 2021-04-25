@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class AtomicIntegerTest2 {
 
-    private static final int THREADS_CONUT = 20;
+    private static final int THREADS_COUNT = 20;
     /*public static volatile int count = 0;*/
     /**
      * 利用AtomicInteger保证成员变量在并发时的原子性
@@ -22,8 +22,8 @@ public class AtomicIntegerTest2 {
     }
 
     public static void main(String[] args) {
-        Thread[] threads = new Thread[THREADS_CONUT];
-        for (int i = 0; i < THREADS_CONUT; i++) {
+        Thread[] threads = new Thread[THREADS_COUNT];
+        for (int i = 0; i < THREADS_COUNT; i++) {
             threads[i] = new Thread(() -> {
                 for (int i1 = 0; i1 < 1000; i1++) {
                     increase();
