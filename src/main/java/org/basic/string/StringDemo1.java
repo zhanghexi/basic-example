@@ -19,5 +19,17 @@ public class StringDemo1 {
          * 参考文献：https://blog.csdn.net/u013905744/article/details/52414111
          */
         System.out.println(a.equals(b));
+
+        System.out.println("====================================================================");
+
+        Integer i1 = 100;
+        Integer i2 = 100;
+        System.out.println(i1 == i2);
+
+        System.out.println("====================================================================");
+
+        Integer i3 = 1000;
+        Integer i4 = 1000;
+        System.out.println(i3 == i4);
     }
 }
