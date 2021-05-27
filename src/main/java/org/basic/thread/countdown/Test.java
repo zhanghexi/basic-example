@@ -13,25 +13,28 @@ import java.util.concurrent.TimeUnit;
  */
 public class Test {
 
-    public static final int threadNum = 10;
+    public static final int corePoolSize = 10;
+    public static final int maximumPoolSize = 20;
+    public static final int keepAliveTime = 20;
 
     public static void main(String[] args) {
-        CountDownLatch latch = new CountDownLatch(threadNum);
+        CountDownLatch latch = new CountDownLatch(corePoolSize);
 
-        /*创建一个固定大小的线程池*/
-        ThreadPoolExecutor executor = new ThreadPoolExecutor(threadNum,
-                20,
-                10,
+        /** 创建一个固定大小的线程池*/
+        ThreadPoolExecutor executor = new ThreadPoolExecutor(
+                corePoolSize,
+                maximumPoolSize,
+                keepAliveTime,
                 TimeUnit.SECONDS,
                 new LinkedBlockingQueue<>());
-        /*添加线程到线程池*/
-        for (int i = 0; i < threadNum; i++) {
+        /** 添加线程到线程池*/
+        for (int i = 0; i < corePoolSize; i++) {
             executor.execute(new Person(latch, (i + 1)));
         }
         System.out.println("开始等待全员签到...");
 
         try {
-            /*等待所有线程执行完毕*/
+            /** 等待所有线程执行完毕*/
             latch.await();
             System.out.println("签到完毕，开始吃饭...");
         } catch (InterruptedException e) {
