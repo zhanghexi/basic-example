@@ -27,18 +27,18 @@ public class AtomicIntegerTest {
     @SneakyThrows
     public static void main(String[] args) {
         ExecutorService executor = Executors.newFixedThreadPool(200);
-        for (int i = 0; i < size; i++) {
+        for (int i = 1; i <= size; i++) {
             executor.execute(() -> {
                 //自减并返回当前值
-                int increment = atomicInteger.decrementAndGet();
-                System.out.println("线程 " + Thread.currentThread().getName()
-                        + " 的count值等于 " + increment);
+                /*int increment = atomicInteger.decrementAndGet();*/
+                size--;
+                System.out.println("线程 " + Thread.currentThread().getName() + " 的count值等于 " + size);
             });
-            /*try {
-                Thread.sleep(200);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }*/
+//            try {
+//                TimeUnit.SECONDS.sleep(1);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
         }
         executor.shutdown();
     }

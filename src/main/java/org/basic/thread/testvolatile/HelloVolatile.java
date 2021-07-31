@@ -15,7 +15,8 @@ public class HelloVolatile {
     private static void m() {
         System.out.println("m start....");
         while (running) {
-
+            /*这里println由于用到了 synchronized 关键字，所以即使没有 volatile 也会保持可见性*/
+            /*System.out.println("Hello...");*/
         }
         System.out.println("m end....");
     }
