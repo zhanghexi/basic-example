@@ -1,5 +1,6 @@
 package org.basic.designparttern.proxy.cglib;
 
+import lombok.extern.log4j.Log4j2;
 import net.sf.cglib.proxy.Enhancer;
 
 import java.util.concurrent.TimeUnit;
@@ -21,13 +22,13 @@ public class Main {
     }
 }
 
-
+@Log4j2
 class Tank {
 
     public void move() {
-        System.out.println("Tank moving...");
+        log.info("Tank moving...");
         try {
-            TimeUnit.SECONDS.sleep(5);
+            TimeUnit.SECONDS.sleep(3);
         } catch (Exception e) {
             e.printStackTrace();
         }
