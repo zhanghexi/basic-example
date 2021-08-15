@@ -22,7 +22,7 @@ public class Demo {
             System.out.println("end");
         }).start();
         /*这里面不涉及任何重排序和可见性问题*/
-        TimeUnit.SECONDS.sleep(5);
+        TimeUnit.SECONDS.sleep(3);
         flag = true;
     }
 }
